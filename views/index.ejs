@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #details {
+            display: flex;
+            height: 800px;
+            align-items: center;
+            justify-content: center;
+        }
+        form {
+            border: 2px solid black;
+            padding: 20px;
+            box-shadow: 5px 5px 10px magenta;
+        }
+        .gapping {
+            margin-bottom: 25px;
+        }
+        .required {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="details">
+        <form id="form" action="/colleges" method="POST">
+            <div id="one" class="gapping">
+                <label for="name">Name <span class="required">*</span></label>
+                <input type="text" id="name" required>
+            </div>
+            
+            <div id="two" class="gapping">
+                <label for="college">Intermediate-College</label>
+                <input type="text" id="college">
+            </div>
+            
+            <div id="three" class="gapping">
+                <label for="phn">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="phn" required>
+            </div>
+            
+            <div id="four" class="gapping">
+                <label for="email">Email-Id</label>
+                <input type="email" id="email">
+            </div>
+            
+            <div id="five" class="gapping">
+                <label for="rank">Expected Emcate rank <span class="required">*</span></label>
+                <input type="number" id="rank" required name="rank">
+            </div>
+            <div id="six" class="gapping">
+                <label for="cat">Gender<span class="required">*</span></label>
+                <input type="radio" value="BOY" name="gender" required> BOY
+                <input type="radio" Value="GIRL" name="gender" required> GIRL
+            </div>
+            
+            <div id="seven" class="gapping">
+                <label for="cat">Category <span class="required">*</span></label>
+                <input type="text" id="cat" name="category" required>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- <script>
+        document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const rank = document.getElementById('rank').value;
+            console.log(rank);
+           
+        });
+
+    </script> -->
+</body>
+</html>
