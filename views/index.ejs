@@ -36,7 +36,13 @@
             color: white;
             font-size: 18px;
             margin: 0 10px;
+           
         }
+        
+        #nav a:hover {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
+        }
+        
         #intro {
             padding: 60px 20px;
             text-align: center;
@@ -168,19 +174,21 @@
             #nav {
                 flex-direction: column;
                 align-items: flex-start;
-                height: auto; /* Ensure height adjusts based on content */
+                height: auto; 
             }
         
             #nav #eamcet {
                 margin-bottom: 10px;
+                padding-left:10px ;
             }
         
             #nav a {
                 margin: 5px 0;
-                display: block; /* Display links as block elements */
-                padding: 10px 0; /* Add padding for better clickability and height */
-                color: white; /* Ensure links are visible */
+                padding: 10px 0; 
+                color: white; 
+                padding-left: 10px;
             }
+            
         
             #trending {
                 grid-template-columns: repeat(1, 1fr);
@@ -219,10 +227,10 @@
     <div id="home">
         <div id="nav">
             <h2 id="eamcet">APEAPCET 2024</h2>
-            <a href="#home">Home</a>
-            <a href="/top">Top Colleges</a>
-            <a href="https://cets.apsche.ap.gov.in/EAPCET/PDF/APEAPCET2024_Notification_V2.pdf">Notifications</a>
-            <a href="https://cets.apsche.ap.gov.in/EAPCET/EapcetHomepages/ImportantDates.aspx">Important Dates</a>
+            <a href="#home" >Home</a>
+            <a href="/top" >Top Colleges</a>
+            <a href="https://cets.apsche.ap.gov.in/EAPCET/PDF/APEAPCET2024_Notification_V2.pdf" >Notifications</a>
+            <a href="https://cets.apsche.ap.gov.in/EAPCET/EapcetHomepages/ImportantDates.aspx" >Important Dates</a>
         </div>
         <div id="intro">
             <h1>Welcome to APEAPCET 2024</h1>
