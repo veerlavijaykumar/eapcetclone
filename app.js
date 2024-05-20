@@ -18,8 +18,8 @@ const dbURI="mongodb+srv://eamcet:eamcet123@eamcet.wlkxbvq.mongodb.net/eamcet_co
 mongoose.connect(dbURI)
     .then(() => {
         console.log('Connection established');
-        app.listen(3001, () => {
-            console.log("Server is running on port 3001");
+        app.listen(3003, () => {
+            console.log("Server is running on port 3003");
         });
     })
     .catch((err) => {
@@ -43,4 +43,16 @@ app.post('/colleges',(req,res)=>
 
 app.get('/details', (req, res) => {
     res.render('index');
+});
+app.get('/top',(req,res)=>
+{
+    res.render('top');
 })
+app.get('/motivate',(req,res)=>
+{
+    res.render('motivate')
+});
+app.get('/congratulate',(req,res)=>
+    {
+        res.render('congratulate')
+    });

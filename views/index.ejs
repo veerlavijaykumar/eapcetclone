@@ -3,77 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>APEAPCET 2024</title>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        #home {
+            display: flex;
+            flex-direction: column;
+        }
+        #nav {
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(124, 124, 228);
+        }
+        #nav #eamcet {
+            color: white;
+            font-size: 24px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+        #intro {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #intro h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        #intro p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .do {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: rgb(124, 124, 228);
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .do:hover {
+            background-color: rgb(94, 94, 208);
+        }
+        #About {
+            padding: 40px 20px;
+            background-color: lightgrey;
+            text-align: center;
+        }
+        #About h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        #About p {
+            font-size: 18px;
+        }
+        #trending {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card h3 {
+            color: rgb(124, 124, 228);
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 16px;
+            color: #666;
+        }
         #details {
             display: flex;
-            height: 800px;
+            height: 100vh;
             align-items: center;
             justify-content: center;
+            background-color: #f4f4f4;
         }
         form {
-            border: 2px solid black;
+            width: 100%;
+            max-width: 500px;
             padding: 20px;
-            box-shadow: 5px 5px 10px magenta;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .gapping {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+        .gapping label {
+            display:block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .gapping input[type="text"],
+        .gapping input[type="tel"],
+        .gapping input[type="email"],
+        .gapping input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .gapping input[type="radio"] {
+            margin-right: 10px;
         }
         .required {
             color: red;
         }
+        input[type="submit"] {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(124, 124, 228);
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: rgb(94, 94, 208);
+        }
+        footer {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:50px;
+            background-color: #333;
+            color:white;
+        }
+        .trend
+        {
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        @media screen and (max-width: 768px) {
+            #nav {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto; /* Ensure height adjusts based on content */
+            }
+        
+            #nav #eamcet {
+                margin-bottom: 10px;
+            }
+        
+            #nav a {
+                margin: 5px 0;
+                display: block; /* Display links as block elements */
+                padding: 10px 0; /* Add padding for better clickability and height */
+                color: white; /* Ensure links are visible */
+            }
+        
+            #trending {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        
+            #details form {
+                max-width: 100%;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            #intro h1 {
+                font-size: 28px;
+            }
+        
+            #intro p {
+                font-size: 16px;
+            }
+        
+            .card {
+                padding: 15px;
+            }
+        
+            .card h3 {
+                font-size: 20px;
+            }
+        
+            .card p {
+                font-size: 14px;
+            }
+        }
+        
     </style>
 </head>
 <body>
+    <div id="home">
+        <div id="nav">
+            <h2 id="eamcet">APEAPCET 2024</h2>
+            <a href="#home">Home</a>
+            <a href="/top">Top Colleges</a>
+            <a href="https://cets.apsche.ap.gov.in/EAPCET/PDF/APEAPCET2024_Notification_V2.pdf">Notifications</a>
+            <a href="https://cets.apsche.ap.gov.in/EAPCET/EapcetHomepages/ImportantDates.aspx">Important Dates</a>
+        </div>
+        <div id="intro">
+            <h1>Welcome to APEAPCET 2024</h1>
+            <p>Your gateway to top engineering and pharmacy colleges in Andhra Pradesh.</p>
+            <a href="#form" class="do">Find Your College</a>
+        </div>
+        <div id="About">
+            <h2>About EAPCET</h2>
+            <p>The Andhra Pradesh Engineering, Agriculture, and Pharmacy Common Entrance Test (APEAPCET) is a crucial examination for students aspiring to pursue undergraduate courses in engineering, agriculture, and pharmacy in Andhra Pradesh. This exam assesses the knowledge and aptitude of candidates, serving as a gateway to prestigious colleges and universities in the state. Stay informed with the latest updates, notifications, and important dates to ensure a successful application and admission process.</p>
+        </div>
+        <h2 class="trend">Trending Colleges</h2>
+        <div id="trending">
+            <div class="card">
+                <h3>JNTU College of Engineering</h3>
+                <p>Kakinada</p>
+                <p>Placement Records: 85%</p>
+            </div>
+            <div class="card">
+                <h3>Andhra University College of Engineering</h3>
+                <p>Vishakhapatnam</p>
+                <p>Placement Records: 80%</p>
+            </div>
+            <div class="card">
+                <h3>Sri Venkateswara University College of Engineering</h3>
+                <p>Tirupati</p>
+                <p>Placement Records: 80%</p>
+            </div>
+            <div class="card">
+                <h3>Vasireddy Venkatadri Institute of Technology</h3>
+                <p>Guntur</p>
+                <p>Placement Records: 77%</p>
+            </div>
+            <div class="card">
+                <h3>GMR Institute of Technology</h3>
+                <p>Rajam</p>
+                <p>Placement Records: 78%</p>
+            </div>
+            <div class="card">
+                <h3>Gayatri Vidya Parishad College of Engineering</h3>
+                <p>Vishakhapatnam</p>
+                <p>Placement Records: 82%</p>
+            </div>
+            <div class="card">
+                <h3>RVR & JC College of Engineering</h3>
+                <p>Guntur</p>
+                <p>Placement Records: 79%</p>
+            </div>
+            <div class="card">
+                <h3>Lakireddy Bali Reddy College of Engineering</h3>
+                <p>Mydukur</p>
+                <p>Placement Records: 75%</p>
+            </div>
+            <div class="card">
+                <h3>SRKR Engineering College</h3>
+                <p>Bhimavaram</p>
+                <p>Placement Records: 83%</p>
+            </div>
+            <div class="card">
+                <h3>Anil Neerukonda Institute of Technology and Sciences</h3>
+                <p>Vishakhapatnam</p>
+                <p>Placement Records: 81%</p>
+            </div>
+        </div>
+    </div>
+    <h2 class="trend">Know Your College</h2>
     <div id="details">
         <form id="form" action="/colleges" method="POST">
             <div id="one" class="gapping">
                 <label for="name">Name <span class="required">*</span></label>
                 <input type="text" id="name" required>
             </div>
-            
             <div id="two" class="gapping">
                 <label for="college">Intermediate-College</label>
                 <input type="text" id="college">
             </div>
-            
             <div id="three" class="gapping">
                 <label for="phn">Mobile Number <span class="required">*</span></label>
                 <input type="tel" id="phn" required>
             </div>
-            
             <div id="four" class="gapping">
                 <label for="email">Email-Id</label>
                 <input type="email" id="email">
             </div>
-            
             <div id="five" class="gapping">
                 <label for="rank">Expected Emcate rank <span class="required">*</span></label>
                 <input type="number" id="rank" required name="rank">
             </div>
             <div id="six" class="gapping">
-                <label for="cat">Gender<span class="required">*</span></label>
+                <label>Gender<span class="required">*</span></label>
                 <input type="radio" value="BOY" name="gender" required> BOY
-                <input type="radio" Value="GIRL" name="gender" required> GIRL
+                <input type="radio" value="GIRL" name="gender" required> GIRL
             </div>
-            
             <div id="seven" class="gapping">
                 <label for="cat">Category <span class="required">*</span></label>
                 <input type="text" id="cat" name="category" required>
             </div>
-            
             <input type="submit" value="Submit">
         </form>
     </div>
-
-    <!-- <script>
-        document.getElementById('form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const rank = document.getElementById('rank').value;
-            console.log(rank);
-           
-        });
-
-    </script> -->
+    <footer>
+        <p>Made By Vijay with Love &hearts;</p>
+    </footer>
 </body>
 </html>
+

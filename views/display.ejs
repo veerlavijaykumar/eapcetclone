@@ -19,6 +19,20 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
         h3 {
             font-size: 20px;
             margin: 10px 0;
@@ -36,10 +50,61 @@
         .result:hover {
             background-color: #f5f5f5;
         }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: #333;
+        }
+        footer p {
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #colleges
+            {
+                padding-bottom: 20px;
+            }
+            .buttons {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            button {
+                width: 100%;
+                padding: 10px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="header">
+            <h1 id="colleges">Colleges</h1>
+            <div class="buttons">
+               <a href="/motivate"><button id="motivateBtn">Motivate</button></a>
+                <a href="/congratulate"><button id="congratulateBtn">Congratulate</button></a>
+            </div>
+        </div>
+       
         <% if (colleges.length > 0) { %>
             <% colleges.forEach(college => { %>
                 <div class="result">
@@ -52,5 +117,8 @@
             <p>No results found.</p>
         <% } %>
     </div>
+    <footer>
+        <p>Made By Vijay with Love &hearts;</p>
+    </footer>
 </body>
 </html>
