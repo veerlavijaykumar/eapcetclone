@@ -12,7 +12,7 @@
             background-color: #f8f9fa;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
@@ -23,15 +23,56 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             margin-bottom: 20px;
         }
         .header h1 {
             font-size: 24px;
             margin: 0;
+            flex-grow: 1;
         }
         .buttons {
             display: flex;
             gap: 10px;
+        }
+        .buttons a {
+            text-decoration: none;
+        }
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        #motivateBtn, #congratulateBtn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #motivateBtn:hover, #congratulateBtn:hover {
+            background-color: #0056b3;
         }
         h3 {
             font-size: 20px;
@@ -50,24 +91,13 @@
         .result:hover {
             background-color: #f5f5f5;
         }
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
         footer {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 50px;
             background-color: #333;
+            margin-top: 20px;
         }
         footer p {
             color: white;
@@ -77,15 +107,18 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            #colleges
-            {
-                padding-bottom: 20px;
-            }
             .buttons {
                 width: 100%;
-                display: flex;
                 flex-direction: column;
                 gap: 10px;
+                margin-top: 10px;
+            }
+            .search-bar {
+                flex-direction: column;
+            }
+            .search-bar input, .search-bar button {
+                width: 100%;
+                margin: 5px 0;
             }
             button {
                 width: 100%;
@@ -100,25 +133,63 @@
         <div class="header">
             <h1 id="colleges">Colleges</h1>
             <div class="buttons">
-               <a href="/motivate"><button id="motivateBtn">Motivate</button></a>
+                <a href="/motivate"><button id="motivateBtn">Motivate</button></a>
                 <a href="/congratulate"><button id="congratulateBtn">Congratulate</button></a>
             </div>
         </div>
-       
-        <% if (colleges.length > 0) { %>
-            <% colleges.forEach(college => { %>
-                <div class="result">
-                    <h3><%= college.inst_name %> - <%= college.inst_code %></h3>
-                    <p><strong>Last Rank:</strong> <%= college[score] %></p>
-                    <p><strong>Branch Code:</strong> <%= college.branch_code %></p>
-                </div>
-            <% }) %>
-        <% } else { %> 
-            <p>No results found.</p>
-        <% } %>
+        
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for colleges by name...">
+            <button onclick="searchColleges()">Search</button>
+            <button id="resetButton" onclick="resetSearch()" style="background-color:rgb(224, 27, 27)">Back</button>
+        </div>
+        
+        <div id="results">
+            <% if (colleges.length > 0) { %>
+                <% colleges.forEach(college => { %>
+                    <div class="result">
+                        <h3><%= college.inst_name %> - <%= college.inst_code %></h3>
+                        <p><strong>Last Rank:</strong> <%= college[score] %></p>
+                        <p><strong>Branch Code:</strong> <%= college.branch_code %></p>
+                        <p><strong>Place:</strong> <%= college.PLACE %></p>
+                    </div>
+                <% }) %>
+            <% } else { %> 
+                <p>No results found.</p>
+            <% } %>
+        </div>
     </div>
     <footer>
         <p>Made By Vijay with Love &hearts;</p>
     </footer>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                searchColleges(); 
+            }
+        });
+        function searchColleges() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            const results = document.querySelectorAll('.result');
+            results.forEach(result => {
+                const collegeName = result.querySelector('h3').textContent.toLowerCase();
+                if (collegeName.includes(input)) {
+                    result.style.display = 'block';
+                } else {
+                    result.style.display = 'none';
+                }
+            });
+            
+        }
+        function resetSearch() {
+            document.getElementById('searchInput').value = ''; // Clear the search input
+            const results = document.querySelectorAll('.result');
+            results.forEach(result => {
+                result.style.display = 'block'; // Display all results
+            });
+        }
+    </script>
 </body>
 </html>
