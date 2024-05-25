@@ -300,7 +300,7 @@
         <form id="form" action="/colleges" method="POST">
             <div id="one" class="gapping">
                 <label for="name">Name <span class="required">*</span></label>
-                <input type="text" id="name" required>
+                <input type="text" id="name" required name="fullname">
             </div>
             <div id="two" class="gapping">
                 <label for="college">Intermediate-College</label>
@@ -312,7 +312,7 @@
             </div>
             <div id="four" class="gapping">
                 <label for="email">Email-Id</label>
-                <input type="email" id="email">
+                <input type="email" id="email" name="email">
             </div>
             <div id="five" class="gapping">
                 <label for="rank">Expected Eamcet rank <span class="required">*</span></label>
@@ -325,7 +325,17 @@
             </div>
             <div id="seven" class="gapping">
                 <label for="cat">Category <span class="required">*</span></label>
-                <input type="text" id="cat" name="category" required placeholder="Use Capital Letters">
+                <select id="cat" name="category">
+                    <option value="OC">OC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BCB">BCB</option>
+                    <option value="BCC">BCC</option>
+                    <option value="BCD">BCD</option>
+                    <option value="BCE">BCE</option>
+                    <option value="OC_EWS">OC_EWS</option>
+                </select>
             </div>
             <input type="submit" value="Submit">
         </form>
