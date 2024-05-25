@@ -34,7 +34,7 @@ app.post('/colleges',(req,res)=>
     console.log(category);
     console.log(gender);
     const score=category+"_"+gender+"S"
-    College.find({ [score]: { $gt: parseInt(rank) }},{inst_name:1,inst_code:1,_id:0,[score]:1,branch_code:1} ).sort({[score]:1})
+    College.find({ [score]: { $gt: parseInt(rank) }},{inst_name:1,inst_code:1,_id:0,[score]:1,branch_code:1,PLACE:1} ).sort({[score]:1})
         .then(colleges => {
             res.render('display', { colleges: colleges, score:score });
             console.log(colleges)
