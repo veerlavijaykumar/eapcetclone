@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        #details {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        form {
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        form:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .gapping {
+            margin-bottom: 20px;
+        }
+        .gapping label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        .gapping input[type="text"],
+        .gapping input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gapping input[type="text"]:focus,
+        .gapping input[type="number"]:focus {
+            border-color: #7c7ce4;
+            box-shadow: 0 0 8px rgba(124, 124, 228, 0.2);
+            outline: none;
+        }
+        .required {
+            color: red;
+        }
+        input[type="submit"] {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            background-color: #7c7ce4;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #6a6ad3;
+            transform: translateY(-2px);
+        }
+        input[type="submit"]:active {
+            background-color: #5e5ec0;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="details">
+        <form id="form" action="/ranks" method="POST">
+            <div id="one" class="gapping">
+                <label for="name">Name <span class="required">*</span></label>
+                <input type="text" id="name" required name="fullname">
+            </div>
+            <div id="two" class="gapping">
+                <label for="eamcetmarks">Eamcet Marks</label>
+                <input type="number" id="eamcetmarks" name="eamcetmarks">
+            </div>
+            <div id="three" class="gapping">
+                <label for="ipe">First & Second Year Marks (Math: 300, Physics: 120, Chemistry: 120)<span class="required">*</span></label>
+                <input type="number" id="ipe" required name="ipe">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

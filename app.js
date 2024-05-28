@@ -34,10 +34,10 @@ app.post('/colleges',(req,res)=>
     console.log(category);
     console.log(gender);
     const score=category+"_"+gender+"S"
-    College.find({ [score]: { $gt: parseInt(rank) }},{inst_name:1,inst_code:1,_id:0,[score]:1,branch_code:1} ).sort({[score]:1})
+    College.find({ [score]: { $gt: parseInt(rank) }},{inst_name:1,inst_code:1,_id:0,[score]:1,branch_code:1,PLACE:1} ).sort({[score]:1})
         .then(colleges => {
             res.render('display', { colleges: colleges, score:score });
-            console.log(colleges)
+            // console.log(colleges)
         })
     });
 
@@ -56,3 +56,36 @@ app.get('/congratulate',(req,res)=>
     {
         res.render('congratulate')
     });
+app.get('/rankmarks',(req,res)=>
+{
+    res.render('rankmarks');
+});
+app.post('/ranks', (req, res) => {
+    const { fullname, eamcetmarks, ipe } = req.body;
+    console.log(fullname);
+    console.log(eamcetmarks);
+    console.log(ipe);
+    const totalmarks=Math.ceil(((eamcetmarks/160)*75)+((ipe/600)*25));
+    console.log(totalmarks);
+    if (totalmarks >= 90 && totalmarks <= 100) {
+        message = 'Your Rank is between 1-100';
+    } else if (totalmarks >= 81 && totalmarks < 90) {
+        message = 'Your Rank is between 101-1000';
+    } else if (totalmarks >= 71 && totalmarks < 81) {
+        message = 'Your Rank is between 1001-5000';
+    } else if (totalmarks >= 61 && totalmarks < 71) {
+        message = 'Your Rank is between 5001-15000';
+    } else if (totalmarks >= 51 && totalmarks < 61) {
+        message = 'Your Rank is between 15000-50000';
+    } else if (totalmarks >= 40 && totalmarks < 51) {
+        message = 'Your Rank is between 50,001-1,50,000';
+    } else  {
+        message = 'For SC,ST Students (Your Rank is greater than 1,50,000) Others (Not qualified (total marks are less than 40).';
+    }
+    console.log(message);
+    res.render('rankvsmarks',{message:message});
+});
+    
+
+    
+
