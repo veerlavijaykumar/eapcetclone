@@ -41,13 +41,14 @@
         .search-bar {
             display: flex;
             margin-bottom: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
-        .search-bar input {
+        .search-bar input, .search-bar select {
             flex-grow: 1;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            margin-right: 10px;
         }
         .search-bar button {
             background-color: #007bff;
@@ -56,7 +57,6 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            margin-right: 15px;
             transition: background-color 0.3s ease;
         }
         .search-bar button:hover {
@@ -116,7 +116,7 @@
             .search-bar {
                 flex-direction: column;
             }
-            .search-bar input, .search-bar button {
+            .search-bar input, .search-bar select {
                 width: 100%;
                 margin: 5px 0;
             }
@@ -140,7 +140,21 @@
         
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for colleges by name...">
-            <button onclick="searchColleges()">Search</button>
+            <select id="branchSelect">
+                <option value="">Select Branch</option>
+                <option value="CSE">Computer Science(CSE)</option>
+                <option value="CSM">CSM</option>
+                <option value="CSO">CSO</option>
+                <option value="AID">AIDS</option>
+                <option value="CAI">CAI</option>
+                <option value="CSD">CSD</option>
+                <option value="AIM">AI&ML</option>
+                <option value="EE">Electrical Engineering(EEE)</option>
+                <option value="ECE">Electronics and Communication Engineering(ECE)</option>
+                <option value="CIV">Civil Engineering(CIV)</option>
+                <option value="ME">Mechanical Engineering(MECH)</option>
+
+            </select>
             <button id="resetButton" onclick="resetSearch()" style="background-color:rgb(224, 27, 27)">Back</button>
         </div>
         
@@ -160,36 +174,42 @@
         </div>
     </div>
     <footer>
-        <p>Made By Vijay with Love &hearts;</p>
+        <p>Made By Vijay&Sudarshan with Love &hearts;</p>
     </footer>
 
     <script>
-        document.getElementById('searchInput').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); 
-                searchColleges(); 
-            }
+        document.getElementById('searchInput').addEventListener('input', function() {
+            searchColleges();
         });
+
+        document.getElementById('branchSelect').addEventListener('change', function() {
+            searchColleges();
+        });
+    
         function searchColleges() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
+            let nameInput = document.getElementById('searchInput').value.toLowerCase();
+            let branchSelect = document.getElementById('branchSelect').value.toLowerCase();
             const results = document.querySelectorAll('.result');
             results.forEach(result => {
                 const collegeName = result.querySelector('h3').textContent.toLowerCase();
-                if (collegeName.includes(input)) {
+                const branchCode = result.querySelector('p:nth-child(3)').textContent.toLowerCase();
+                if (collegeName.includes(nameInput) && (branchSelect === "" || branchCode.includes(branchSelect))) {
                     result.style.display = 'block';
                 } else {
                     result.style.display = 'none';
                 }
             });
-            
         }
+    
         function resetSearch() {
-            document.getElementById('searchInput').value = ''; // Clear the search input
+            document.getElementById('searchInput').value = '';
+            document.getElementById('branchSelect').value = '';
             const results = document.querySelectorAll('.result');
             results.forEach(result => {
-                result.style.display = 'block'; // Display all results
+                result.style.display = 'block'; 
             });
         }
     </script>
+    
 </body>
 </html>
