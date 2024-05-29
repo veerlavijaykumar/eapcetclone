@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RankVsMarks</title>
     <style>
         * {
             padding: 0;
@@ -81,6 +81,14 @@
             background-color: #5e5ec0;
             transform: translateY(0);
         }
+        footer {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:50px;
+            background-color: #333;
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -91,15 +99,18 @@
                 <input type="text" id="name" required name="fullname">
             </div>
             <div id="two" class="gapping">
-                <label for="eamcetmarks">Eamcet Marks</label>
+                <label for="eamcetmarks">Eamcet Marks<span class="required">*</span></label>
                 <input type="number" id="eamcetmarks" name="eamcetmarks">
             </div>
             <div id="three" class="gapping">
-                <label for="ipe">First & Second Year Marks (Math: 300, Physics: 120, Chemistry: 120)<span class="required">*</span></label>
+                <label for="ipe">Please provide the total marks for GROUPS (MPC/BIPC) over 2 years (300+120+120), along with the marks attained in Practicals (out of 60)<span class="required">*</span></label>
                 <input type="number" id="ipe" required name="ipe">
             </div>
             <input type="submit" value="Submit">
         </form>
     </div>
 </body>
+<footer>
+    <p>Made By Vijay&Sudarshan with Love &hearts;</p>
+</footer>
 </html>
