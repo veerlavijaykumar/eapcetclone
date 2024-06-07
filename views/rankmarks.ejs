@@ -10,10 +10,32 @@
             margin: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f0f2f5;
             color: #333;
+        }
+        #nav {
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(124, 124, 228);
+        }
+        #nav #eamcet {
+            color: white;
+            font-size: 24px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+        
+        #nav a:hover {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
         }
         #details {
             display: flex;
@@ -89,9 +111,36 @@
             background-color: #333;
             color:white;
         }
+        @media(max-width:600px)
+        {
+            #nav {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+            }
+
+            #nav #eamcet {
+                margin-bottom: 10px;
+                padding-left: 10px;
+            }
+
+            #nav a {
+                margin: 5px 0;
+                padding: 10px 0;
+                color: white;
+                padding-left: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+      <div id="nav">
+            <h2 id="eamcet">APEAPCET 2024</h2>
+            <a href="/details" >Home</a>
+            <a href="/top" >Top Colleges</a>
+            <a href="https://cets.apsche.ap.gov.in/EAPCET/PDF/APEAPCET2024_Notification_V2.pdf" >Notifications</a>
+            <a href="https://cets.apsche.ap.gov.in/EAPCET/EapcetHomepages/ImportantDates.aspx" >Important Dates</a> 
+        </div>
     <div id="details">
         <form id="form" action="/ranks" method="POST">
             <div id="one" class="gapping">
@@ -111,6 +160,6 @@
     </div>
 </body>
 <footer>
-    <p>Made By Vijay&Sudarshan with Love &hearts;</p>
+    <p>&copy;Made By Vijay&Sudarshan with Love &hearts;</p>
 </footer>
 </html>
