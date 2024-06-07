@@ -14,6 +14,31 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden; 
+            flex-direction: column;
+        }
+        #nav {
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(124, 124, 228);
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        #nav #eamcet {
+            color: white;
+            font-size: 24px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+        #nav a:hover {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
         }
         .container {
             background-color: #fff;
@@ -22,11 +47,15 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             text-align: center;
+            animation: fadeIn 2s ease-in;
+            margin-top: 80px; /* Provide space for the fixed nav */
+            width: 90%; /* Responsive width */
         }
         h1 {
             font-size: 28px;
             color: #007bff;
             margin-bottom: 20px;
+            animation: slideIn 2s ease-in-out;
         }
         p {
             font-size: 18px;
@@ -37,6 +66,7 @@
             font-style: italic;
             color: #777;
             margin: 20px 0;
+            animation: quoteFade 3s ease-in;
         }
         .btn {
             background-color: #28a745;
@@ -52,16 +82,107 @@
         .btn:hover {
             background-color: #218838;
         }
+        @media(max-width:600px) {
+            #nav {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+            }
+            #nav #eamcet {
+                margin-bottom: 10px;
+                padding-left: 10px;
+            }
+            #nav a {
+                margin: 5px 0;
+                padding: 10px 0;
+                color: white;
+                padding-left: 10px;
+            }
+            .container
+            {
+               position:relative;
+               top:200px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes quoteFade {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* Confetti animation */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: #007bff;
+            opacity: 0.7;
+            transform: translateX(-50%);
+            animation: confettiFall 4s infinite ease-in;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+        .confetti:nth-child(odd) {
+            background-color: #28a745;
+            animation-duration: 3s;
+        }
     </style>
 </head>
 <body>
+    <div id="nav">
+        <h2 id="eamcet">APEAPCET 2024</h2>
+        <a href="/details" >Home</a>
+        <a href="/top" >Top Colleges</a>
+        <a href="https://cets.apsche.ap.gov.in/EAPCET/PDF/APEAPCET2024_Notification_V2.pdf" >Notifications</a>
+        <a href="https://cets.apsche.ap.gov.in/EAPCET/EapcetHomepages/ImportantDates.aspx" >Important Dates</a> 
+    </div>
     <div class="container">
         <h1>Congratulations on Your Achievement!</h1>
         <p>Dear Students,</p>
         <p>Your hard work and dedication have paid off! We are incredibly proud of your achievements. This milestone is a testament to your perseverance, intelligence, and commitment to excellence.</p>
         <p class="quote">"Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful." – Albert Schweitzer</p>
         <p>Keep striving for greatness and continue to pursue your passions with the same vigor. Your success today is just the beginning of many more to come. Celebrate your accomplishments and look forward to a bright future.</p>
-       
     </div>
+    
+    <div id="confetti-container"></div>
+    <script>
+        // Create confetti elements
+        function createConfetti() {
+            const container = document.querySelector('#confetti-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = getRandomColor();
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                container.appendChild(confetti);
+            }
+        }
+        
+        function getRandomColor() {
+            const colors = ['#ff0', '#0f0', '#f00', '#00f', '#ff00ff', '#00ffff'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        createConfetti();
+        
+    </script>
 </body>
 </html>
