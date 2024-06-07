@@ -11,6 +11,27 @@
             padding: 0;
             background-color: #f8f9fa;
         }
+        #nav {
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(124, 124, 228);
+        }
+        #nav #eamcet {
+            color: white;
+            font-size: 24px;
+        }
+        #nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+        
+        #nav a:hover {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
+        }
         .container {
             max-width: 900px;
             margin: 20px auto;
@@ -98,11 +119,29 @@
             height: 50px;
             background-color: #333;
             margin-top: 20px;
+            
         }
         footer p {
             color: white;
         }
         @media (max-width: 600px) {
+            #nav {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+            }
+
+            #nav #eamcet {
+                margin-bottom: 10px;
+                padding-left: 10px;
+            }
+
+            #nav a {
+                margin: 5px 0;
+                padding: 10px 0;
+                color: white;
+                padding-left: 10px;
+            }
             .header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -129,6 +168,13 @@
     </style>
 </head>
 <body>
+    <div id="nav">
+        <h2 id="eamcet">APEAPCET 2024</h2>
+        <a href="/details" >Home</a>
+        <a href="/top" >Top Colleges</a>
+        <a href="https://cets.apsche.ap.gov.in/EAPCET/PDF/APEAPCET2024_Notification_V2.pdf" >Notifications</a>
+        <a href="https://cets.apsche.ap.gov.in/EAPCET/EapcetHomepages/ImportantDates.aspx" >Important Dates</a> 
+    </div>
     <div class="container">
         <div class="header">
             <h1 id="colleges">Colleges</h1>
@@ -155,7 +201,7 @@
                 <option value="ME">Mechanical Engineering(MECH)</option>
 
             </select>
-            <button id="resetButton" onclick="resetSearch()" style="background-color:rgb(224, 27, 27)">Back</button>
+            <button id="resetButton" onclick="resetSearch()" style="background-color:rgb(224, 27, 27)">Reset</button>
         </div>
         
         <div id="results">
@@ -174,7 +220,7 @@
         </div>
     </div>
     <footer>
-        <p>Made By Vijay&Sudarshan with Love &hearts;</p>
+        <p>&copy;Made By Vijay&Sudarshan with Love &hearts;</p>
     </footer>
 
     <script>
@@ -187,6 +233,7 @@
         });
     
         function searchColleges() {
+            let hasElement=false;
             let nameInput = document.getElementById('searchInput').value.toLowerCase();
             let branchSelect = document.getElementById('branchSelect').value.toLowerCase();
             const results = document.querySelectorAll('.result');
@@ -195,10 +242,19 @@
                 const branchCode = result.querySelector('p:nth-child(3)').textContent.toLowerCase();
                 if (collegeName.includes(nameInput) && (branchSelect === "" || branchCode.includes(branchSelect))) {
                     result.style.display = 'block';
+                    hasElement=true;
                 } else {
                     result.style.display = 'none';
+                    document.innerHTML="<p>No Results Found</p>";
                 }
             });
+            if(!hasElement)
+            {
+                let p=document.createElement("p");
+                p.textContent="No Colleges Found";
+                document.body.appendChild(p);
+
+            }
         }
     
         function resetSearch() {
